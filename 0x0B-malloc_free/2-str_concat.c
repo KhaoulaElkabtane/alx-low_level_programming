@@ -36,18 +36,18 @@ char *str_concat(char *s1, char *s2)
 			i2++;
 		}
 	}
-	s = (char *) malloc((i1 + i2) * sizeof(char));
+	s = (char *) malloc((i1 + i2 - 1) * sizeof(char));
 	if (s == NULL)
 	{
 		return (NULL);
 	}
-	for (i = 0; i <= i1; i++)
+	for (i = 0; i < i1 - 1; i++)
 	{
 		s[i] = s1[i];
 	}
-	for (i = i1 + 1; i <= i1 + i2; i++)
+	for (i = i1 - 1; i <= i1 + i2 - 2; i++)
 	{
-		s[i] = s2[i - i1];
+		s[i] = s2[i - i1 - 1];
 	}
 	return (s);
 }
