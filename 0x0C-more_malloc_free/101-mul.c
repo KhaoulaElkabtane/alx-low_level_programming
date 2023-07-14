@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 			carry /= 10;
 		}
 		if (carry > 0)
-			result[l1 + l2 + 1] += carry
+			result[l1 + l2 + 1] += carry;
 	}
 	for (i = 0; i < l - 1; i++)
 	{
