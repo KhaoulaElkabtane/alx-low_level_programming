@@ -1,13 +1,11 @@
 #ifndef DOG_H
 #define DOG_H
 
- /**
- * Define a new type struct dog with the following elements:
- * @name, type = char *
- * @age, type = float
- * @owner, type = char *
- *
- * Description: just a long dog struct in a big kitty world
+/**
+ * struct dog - list dates about pet
+ * @name: pet name
+ * @age: pet age
+ * @owner: pet owner name
  */
 struct dog
 {
