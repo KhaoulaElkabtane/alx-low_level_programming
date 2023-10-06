@@ -115,31 +115,28 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 }
 
 /**
- * shash_table_get - Retrieve the value associated with
- *                   a key in a sorted hash table.
- * @ht: A pointer to the sorted hash table.
- * @key: The key to get the value of.
- *
- * Return: If the key cannot be matched - NULL.
- *         Otherwise - the value associated with key in ht.
+ * shash_table_get - Retrieves the value associated with a key in a sorted hash table.
+ * @ht: Pointer to the sorted hash table.
+ * @key: Key to search for.
+ * Return: Value associated with the key, or NULL if key is not found or on failure.
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-	shash_node_t *node;
-	unsigned long int index;
+	shash_node_t *shah;
+	unsigned long int ig;
 
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
 
-	index = key_index((const unsigned char *)key, ht->size);
-	if (index >= ht->size)
+	ig = key_index((const unsigned char *)key, ht->size);
+	if (ig >= ht->size)
 		return (NULL);
 
-	node = ht->shead;
-	while (node != NULL && strcmp(node->key, key) != 0)
-		node = node->snext;
+	shah = ht->shead;
+	while (shah != NULL && strcmp(shah->key, key) != 0)
+		shah = shah->snext;
 
-	return ((node == NULL) ? NULL : node->value);
+	return ((shah == NULL) ? NULL : shah->value);
 }
 
 /**
