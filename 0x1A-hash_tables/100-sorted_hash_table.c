@@ -142,46 +142,49 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 }
 
 /**
- * shash_table_print - Prints a sorted hash table in order.
- * @ht: A pointer to the sorted hash table.
+ * shash_table_print - Prints the key-value pairs of a sorted hash table.
+ * @ht: Pointer to the sorted hash table.
+ * Return: Nothing
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *node;
+	shash_node_t *shah;
 
 	if (ht == NULL)
 		return;
 
-	node = ht->shead;
+	shah = ht->shead;
 	printf("{");
-	while (node != NULL)
+	while (shah != NULL)
 	{
-		printf("'%s': '%s'", node->key, node->value);
-		node = node->snext;
-		if (node != NULL)
+		printf("'%s': '%s'", shah->key, shah->value);
+		shah = shah->snext;
+		if (shah != NULL)
 			printf(", ");
 	}
 	printf("}\n");
 }
 
 /**
- * shash_table_print_rev - Prints a sorted hash table in reverse order.
- * @ht: A pointer to the sorted hash table to print.
+ * shash_table_print_rev - Prints the key-value pairs
+ * of a sorted hash table in reverse order.
+ * @ht: Pointer to the sorted hash table.
+ * Return: Nothing.
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *node;
+	shash_node_t *shah;
 
 	if (ht == NULL)
 		return;
 
-	node = ht->stail;
+	shah = ht->stail;
 	printf("{");
-	while (node != NULL)
+	while (shah != NULL)
 	{
-		printf("'%s': '%s'", node->key, node->value);
-		node = node->sprev;
-		if (node != NULL)
+		printf("'%s': '%s'", shah->key, shah->value);
+		shah = shah->sprev;
+		if (shah != NULL)
 			printf(", ");
 	}
 	printf("}\n");
@@ -189,26 +192,27 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 /**
  * shash_table_delete - Deletes a sorted hash table.
- * @ht: A pointer to the sorted hash table.
+ * @ht: Pointer to the sorted hash table.
+ * Return: Nothing
  */
 void shash_table_delete(shash_table_t *ht)
 {
-	shash_table_t *head = ht;
-	shash_node_t *node, *tmp;
+	shash_table_t *hsh = ht;
+	shash_node_t *shah, *tmp;
 
 	if (ht == NULL)
 		return;
 
-	node = ht->shead;
-	while (node)
+	shah = ht->shead;
+	while (shah)
 	{
-		tmp = node->snext;
-		free(node->key);
-		free(node->value);
-		free(node);
-		node = tmp;
+		tmp = shah->snext;
+		free(shah->key);
+		free(shah->value);
+		free(shah);
+		shah = tmp;
 	}
 
-	free(head->array);
-	free(head);
+	free(hsh->array);
+	free(hsh);
 }
