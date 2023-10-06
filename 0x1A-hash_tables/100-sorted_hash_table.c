@@ -115,10 +115,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 }
 
 /**
- * shash_table_get - Retrieves the value associated with a key in a sorted hash table.
+ * shash_table_get - Retrieves the value associated with 
+ * a key in a sorted hash table.
  * @ht: Pointer to the sorted hash table.
  * @key: Key to search for.
- * Return: Value associated with the key, or NULL if key is not found or on failure.
+ * Return: Value associated with the key, 
+ * or NULL if key is not found or on failure.
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
